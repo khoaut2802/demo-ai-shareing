@@ -1,0 +1,6 @@
+<h1><%= @task.title %></h1>
+<p><strong>Trạng thái:</strong> <%= @task.done? ? "Đã xong" : "Đang làm" %></p>
+<p><strong>Mô tả:</strong><br><%= simple_format(@task.description.presence || "(không có)") %></p>
+
+<%= link_to "Sửa", edit_task_path(@task) %> |
+<%= link_to "Quay lại danh sách", tasks_path %>

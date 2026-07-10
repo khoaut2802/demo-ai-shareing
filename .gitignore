@@ -1,0 +1,15 @@
+/.bundle
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/db/*.sqlite3
+/db/*.sqlite3-*
+/public/assets
+.byebug_history
+/config/master.key
+/storage/*
+!/storage/.keep
+.env
+spec/examples.txt
+Gemfile.lock

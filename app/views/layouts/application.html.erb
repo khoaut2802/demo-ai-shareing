@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AI Practice Todo Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <style>
+      body { font-family: -apple-system, Arial, sans-serif; max-width: 720px; margin: 40px auto; color: #1a2332; }
+      h1 { font-size: 26px; }
+      table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+      th, td { text-align: left; padding: 8px; border-bottom: 1px solid #ddd; }
+      .notice { background: #eef3ee; padding: 10px 14px; border-radius: 4px; margin-bottom: 16px; }
+      .actions a, .actions button { margin-right: 8px; }
+      form p { margin-bottom: 12px; }
+      input[type=text], textarea { width: 100%; padding: 6px; box-sizing: border-box; }
+      input[type=submit] { padding: 6px 14px; }
+      .errors { color: #a33; }
+      button.link-style { background: none; border: none; padding: 0; color: #1a56db; text-decoration: underline; cursor: pointer; font-size: inherit; }
+    </style>
+  </head>
+  <body>
+    <% if notice %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
