@@ -13,3 +13,8 @@
 .env
 spec/examples.txt
 Gemfile.lock
+
+# Playwright / Node (e2e testing)
+node_modules/
+playwright-report/
+test-results/
