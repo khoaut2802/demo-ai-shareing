@@ -20,6 +20,29 @@ File `.github/workflows/ci.yml` định nghĩa pipeline chạy tự động trê
 
 Nếu bất kỳ bước nào fail, GitHub sẽ đánh dấu đỏ ngay trên commit/PR — đây là điểm demo chính: **AI có thể viết code rất nhanh, nhưng pipeline này là lưới an toàn đảm bảo code AI viết ra vẫn đúng chuẩn và không phá vỡ tính năng cũ.**
 
+## Chạy bằng Docker (khuyến nghị — môi trường giống nhau cho mọi máy)
+
+Không cần cài Ruby/SQLite trên máy, chỉ cần Docker:
+
+```bash
+git clone https://github.com/khoaut2802/demo-ai-shareing.git
+cd demo-ai-shareing
+docker compose up --build
+```
+
+Mở `http://localhost:3000`. Container tự động chạy `db:prepare` (tạo schema) trước khi start server, nên chỉ cần đúng 1 lệnh là chạy được ngay — bất kể máy đang dùng hệ điều hành gì hay đã cài Ruby phiên bản nào.
+
+Dữ liệu SQLite được lưu ở Docker volume `sqlite_data`, không mất khi tắt/bật lại container. Dừng app: `docker compose down` (thêm `-v` nếu muốn xoá luôn dữ liệu).
+
+Chỉ dùng Docker (không cần docker compose):
+
+```bash
+docker build -t ai-practice-todo-demo .
+docker run -p 3000:3000 ai-practice-todo-demo
+```
+
+Pipeline CI cũng tự build image này và kiểm tra container khởi động + trả response thành công (job `docker` trong `.github/workflows/ci.yml`) — nếu ai đó sửa Dockerfile làm hỏng image, pipeline sẽ báo đỏ ngay, giống như khi RSpec/RuboCop fail.
+
 ## Chạy thử ở local
 
 ```bash
